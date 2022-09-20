@@ -21,7 +21,7 @@ module.exports = {
             ]
         }]
     },
-    async execute(app, interaction, embed){
+    async execute(app, interaction, data, embed){
         let option = interaction.options.getString("test");
         if(option){
             embed.setTitle("Pong!");

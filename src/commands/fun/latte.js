@@ -7,7 +7,7 @@ module.exports = {
         description: "random of the cat latte",
         type: ApplicationCommandType.ChatInput
     },
-    async execute(app, interaction, embed) {
+    async execute(app, interaction, data, embed) {
         let files = fs.readdirSync("src/static/lattepictures");
         let picture = files[Math.floor(Math.random() * files.length)];
         await interaction.reply({files: [`./src/static/lattepictures/${picture}`]});

@@ -21,6 +21,13 @@ class Utility {
         }
         return;
     }
+
+    async checkForData(interaction, data){
+        const {player} = data;
+        if( player == null) {
+            await interaction.reply("You don't have any data on this bot!");
+        }
+    }
 }
 
 module.exports = Utility;

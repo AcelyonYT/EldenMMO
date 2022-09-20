@@ -39,7 +39,7 @@ module.exports = {
             }
         ]
     },
-    execute(app, interaction, embed){
+    execute(app, interaction, data, embed){
         if(!interaction.member.roles.cache.find(r => r.id === "1020932931197354026")) {
             interaction.reply("You cannot use this command!");
             return;
