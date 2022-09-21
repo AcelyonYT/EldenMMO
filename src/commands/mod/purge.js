@@ -39,11 +39,8 @@ module.exports = {
             }
         ]
     },
-    execute(app, interaction, data, embed){
-        if(!interaction.member.roles.cache.find(r => r.id === "1020932931197354026")) {
-            interaction.reply("You cannot use this command!");
-            return;
-        }
+    execute(app, interaction, data, embed, role){
+        if(app.utility.checkForStaffRole(interaction, role)) return;
         const commandType = interaction.options.getSubcommand();
         const number = interaction.options.getInteger("amount");
         if(commandType == "user_messages") {

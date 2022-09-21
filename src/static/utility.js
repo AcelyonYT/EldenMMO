@@ -28,6 +28,15 @@ class Utility {
             await interaction.reply("You don't have any data on this bot!");
         }
     }
+
+    checkForStaffRole(interaction, role){
+        if(!role) {
+            interaction.reply("You cannot use this command!");
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 module.exports = Utility;

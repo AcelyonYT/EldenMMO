@@ -15,6 +15,8 @@ module.exports = async (app, interaction) => {
     // get player data
     let guild = await guildModel.findOneAndUpdate({id: interaction.guild.id}, {returnDocument: "after"}).exec();
     let player = await playerModel.findOneAndUpdate({id: interaction.user.id}, {returnDocument: "after"}).exec();
+    // get staff role
+    const role = interaction.member.roles.cache.find(r => r.id === "1020932931197354026");
     // get the command
     const command = app.commands.get(interaction.commandName);
     // if the interactoin isn't in the guild send this
@@ -24,7 +26,7 @@ module.exports = async (app, interaction) => {
     }
     // execute the command
     try{
-        await command.execute(app, interaction, {guild, player}, embed);
+        await command.execute(app, interaction, {guild, player}, embed, role);
     }
     catch(err){
         // log the error

@@ -5,7 +5,7 @@ const Database = require("./utility/database.js");
 
 class YtCommentBot {
     constructor(){
-        this.client = new Client({intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel]});
+        this.client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent], partials: [Partials.Channel]});
         this.commands = new Collection();
         this.utility = new Utility(this);
         this.db = new Database();
