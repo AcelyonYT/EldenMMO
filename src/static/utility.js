@@ -22,10 +22,9 @@ class Utility {
         return;
     }
 
-    async checkForData(interaction, data){
-        const {player} = data;
-        if( player == null) {
-            await interaction.reply("You don't have any data on this bot!");
+    enableButtons(buttonMenuRow){
+        for(let i = 0; i < buttonMenuRow.components.length; i++){
+            buttonMenuRow.components[i].setDisabled(false);
         }
     }
 
@@ -36,6 +35,10 @@ class Utility {
         }else{
             return false;
         }
+    }
+
+    randomInt(min, max){
+        return Math.floor(Math.random() * (max - min) ) + min;
     }
 }
 

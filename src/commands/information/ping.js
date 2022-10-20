@@ -6,26 +6,30 @@ module.exports = {
         type: ApplicationCommandType.ChatInput,
         description: "send pong or embed",
         options: [{
-            name: 'test',
-            description: 'test',
+            name: 'information',
+            description: 'sends information or just pong',
             type: ApplicationCommandOptionType.String,
+            required: true,
             choices: [
                 {
-                    name: "Test1",
-                    value: "You did it"
+                    name: "Ping",
+                    value: "ping"
                 },
                 {
-                    name: "Test2",
-                    value: "You did it again"
+                    name: "Pong",
+                    value: "pong"
                 }
             ]
         }]
     },
     async execute(app, interaction, data, embed){
-        let option = interaction.options.getString("test");
-        if(option){
-            embed.setTitle("Pong!");
-            embed.addFields({name: `${option}`, value: "Test"});
+        const option = interaction.options.getString("information");
+        if(option == "ping"){
+            embed.setTitle("🏓Pong!");
+            embed.addFields(
+                {name: "Latency:", value: `${Date.now() - interaction.createdTimestamp}ms`, inline: true},
+                {name: "API Latency:", value: `${Math.round(interaction.client.ws.ping)}ms`, inline: true}
+            );
             await interaction.reply({embeds: [embed]});
         }else{
             await interaction.reply("Pong!");

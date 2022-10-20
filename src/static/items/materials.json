@@ -1,0 +1,29 @@
+{
+    "Herb": {
+        "category":"materials"
+    },
+    "Mushroom": {
+        "category":"materials"
+    },
+    "Flask": {
+        "category":"materials"
+    },
+    "Blue_Mountain_Flower": {
+        "category":"materials"
+    },
+    "Moss": {
+        "category":"materials"
+    },
+    "Stick": {
+        "category":"materials"
+    },
+    "Fiber": {
+        "category":"materials"
+    },
+    "Rock": {
+        "category":"materials"
+    },
+    "Red_Mountain_Flower": {
+        "category":"materials"
+    }
+}

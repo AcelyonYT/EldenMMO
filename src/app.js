@@ -2,6 +2,7 @@ const {Client, GatewayIntentBits, Partials, Collection} = require("discord.js");
 const fs = require("fs");
 const Utility = require("./static/utility.js");
 const Database = require("./utility/database.js");
+const Items = require("./utility/items.js");
 
 class YtCommentBot {
     constructor(){
@@ -9,11 +10,13 @@ class YtCommentBot {
         this.commands = new Collection();
         this.utility = new Utility(this);
         this.db = new Database();
+        this.items = new Items(this);
     }
     launch(){
         this.loadEvents();
         this.loadCommands();
         this.db.loadDatabase();
+        this.items.loadItems();
         this.client.login(process.env.TOKEN);
     }
     loadEvents(){

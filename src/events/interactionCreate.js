@@ -7,11 +7,12 @@ const { EmbedBuilder } = require("discord.js");
  * @returns 
  */
 module.exports = async (app, interaction) => {
+    if(!interaction.isCommand()) return;
     // grab data models
     const guildModel = app.db.guild;
     const playerModel = app.db.users;
     // create the embed
-    const embed = new EmbedBuilder().setTimestamp(interaction.createdTimestamp).setColor("#c68958");
+    const embed = new EmbedBuilder().setTimestamp(interaction.createdTimestamp).setColor("#D63FB5");
     // get player data
     let guild = await guildModel.findOneAndUpdate({id: interaction.guild.id}, {returnDocument: "after"}).exec();
     let player = await playerModel.findOneAndUpdate({id: interaction.user.id}, {returnDocument: "after"}).exec();

@@ -66,4 +66,21 @@ const userSchema = new Schema({
     stun: {type: Number, default: 0, min: 0, max: 100} // handles stun buildup
 });
 
+userSchema.methods.updateInventory = function(itemName, quantity){
+    if(this.inventory.has(itemName)){
+        const amount = this.inventory.get(itemName) + quantity;
+        if(amount <= 0){
+            this.inventory.delete(itemName);
+        }
+        else{
+            this.inventory.set(itemName, amount);
+        }
+    }
+    else{
+        if(quantity > 0){
+            this.inventory.set(itemName, quantity);
+        }
+    }
+}
+
 module.exports = userSchema;
