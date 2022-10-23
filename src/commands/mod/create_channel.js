@@ -30,7 +30,7 @@ module.exports = {
             },
             {
                 name: "category",
-                description: "the category to put the channel under if any",
+                description: "the Id of the category to put the channel under",
                 type: ApplicationCommandOptionType.String,
             }
         ]
@@ -41,45 +41,40 @@ module.exports = {
             const category = interaction.options.getString("category")
             const type = interaction.options.getString("type");
             const text = interaction.options.getString("text");
+            let parent;
             if(category){
-                const parent = interaction.guild.channels.cache.find(x => x.name == `${category}`);
+                parent = interaction.guild.channels.cache.find(x => x.id == `${category}`);
                 if(!parent) return await interaction.reply("Category doesn't exist!");
-                switch(type) {
-                    case "text":
-                        parent.children.create({
-                            type: ChannelType.GuildText,
-                            name: `${text}`
-                        });
-                    break;
-                    case "voice":
-                        parent.children.create({
-                            type: ChannelType.GuildVoice,
-                            name: `${text}`
-                        });
-                    break;
-                    default: interaction.reply("Invalid channel type");
-                }
-                await interaction.reply(`Created **${text}** ${type} channel!`);
+                createChannel({interaction, parent}, text, type);
             }else{
-                switch(type){
-                    case "text":
-                        interaction.guild.channels.create({
-                            type: ChannelType.GuildText,
-                            name: `${text}`
-                        });
-                    break;
-                    case "voice":
-                        interaction.guild.channels.create({
-                            type: ChannelType.GuildVoice,
-                            name: `${text}`
-                        });
-                    break;
-                    default: interaction.reply("Invaild channel type");
-                }
-                await interaction.reply(`Created **${text}** ${type} channel!`);
+                createChannel({interaction, parent}, text, type);
             }
         }catch(err){
             console.log(err);
         }
     }
+}
+async function createChannel(data, text, type){
+    let { interaction, parent } = data;
+    if(parent){
+        parent = parent.children;
+    }else{
+        parent = interaction.guild.channels;
+    }
+    switch(type){
+        case "text":
+            parent.create({
+                type: ChannelType.GuildText,
+                name: `${text}`
+            })
+        break;
+        case "voice":
+            parent.create({
+                type: ChannelType.GuildVoice,
+                name: `${text}`
+            })
+        break;
+        default: return interaction.reply("Invalid channel type")
+    }
+    await interaction.reply(`Created **${text}** ${type} channel!`);
 }
