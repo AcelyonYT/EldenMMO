@@ -10,10 +10,10 @@ module.exports = {
     async execute(app, interaction, data, embed) {
         const {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
-        // if(player.cooldowns.get("beg") > interaction.createdTimestamp){
-        //     await interaction.reply({content: `You can run **beg** <t:${Math.round(player.cooldowns.get("beg")/1000)}:R>`, ephemeral: true});
-        //     return;
-        // }
+        if(player.cooldowns.get("beg") > interaction.createdTimestamp){
+            await interaction.reply({content: `You can run **beg** <t:${Math.round(player.cooldowns.get("beg")/1000)}:R>`, ephemeral: true});
+            return;
+        }
         const npc = npcList.npcList[ app.utility.randomInt(0, npcList.npcList.length )];
         let copper = Math.floor(Math.random() * 101) + 10;
         let silver = 0;
@@ -33,7 +33,7 @@ module.exports = {
         }else{
             embed.addFields({name: `You begged ${npc.name} and got nothing.`, value: `${npc.badReply}`});
         }
-        // await player.updateOne({$set: {"cooldowns.beg": interaction.createdTimestamp + 300000}});
+        await player.updateOne({$set: {"cooldowns.beg": interaction.createdTimestamp + 300000}});
         await interaction.reply({embeds: [embed], ephemeral: true});
         await player.save();
     }

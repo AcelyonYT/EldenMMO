@@ -43,10 +43,10 @@ module.exports = {
                     await interaction.reply({content: "Data was created for you! Enjoy the bot and don't forget to check up on Acelyon YouTube!", ephemeral: true});
                 }
                 // World Cooldowns
-                // player.cooldowns.set("beg", interaction.createdTimestamp);
-                // player.cooldowns.set("search", interaction.createdTimestamp);
+                player.cooldowns.set("beg", interaction.createdTimestamp);
+                player.cooldowns.set("search", interaction.createdTimestamp);
                 // Daily cooldowns
-                // player.cooldowns.set("hourly", interaction.createdTimestamp);
+                player.cooldowns.set("hourly", interaction.createdTimestamp);
                 // saves the data
                 player = await player.save();
             }

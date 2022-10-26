@@ -103,6 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-src/commands/daily/hourly.js
-src/commands/ui/cooldowns.js
 package-lock.json
