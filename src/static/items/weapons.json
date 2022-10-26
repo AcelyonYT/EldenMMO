@@ -1,3 +1,88 @@
 {
-    
+    "Bow": {
+        "category": "weapons",
+        "ammo": [
+            "Arrow"
+        ],
+        "value": {
+            "buy": {
+                "copper": 80
+            },
+            "sell": {
+                "copper": 40
+            }
+        }
+    },
+    "Arrow": {
+        "category": "weapons",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
+    },
+    "Steyr_Arms_Scout_Rifle": {
+        "category": "weapons",
+        "ammo": [
+            "308_Winchester_Bullet"
+        ],
+        "value": {
+            "buy": {
+                "copper": 30,
+                "silver": 10
+            },
+            "sell": {
+                "copper": 30,
+                "silver": 5
+            }
+        }
+    },
+    "308_Winchester_Bullet": {
+        "category": "weapons",
+        "value": {
+            "buy": {
+                "copper": 10,
+                "silver": 1
+            },
+            "sell": {
+                "copper": 80
+            }
+        }
+    },
+    "Pickaxe": {
+        "category": "weapons",
+        "value": {
+            "buy": {
+                "copper": 70
+            },
+            "sell": {
+                "copper": 35
+            }
+        }
+    },
+    "Wood_Cutters_Axe": {
+        "category": "weapons",
+        "value": {
+            "buy": {
+                "copper": 50
+            },
+            "sell": {
+                "copper": 25
+            }
+        }
+    },
+    "Fishing_Rod": {
+        "category": "weapons",
+        "value": {
+            "buy": {
+                "copper": 30
+            },
+            "sell": {
+                "copper": 15
+            }
+        }
+    }
 }
