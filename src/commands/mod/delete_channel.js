@@ -25,12 +25,12 @@ module.exports = {
             const channels = interaction.guild.channels.cache;
             if(categoryId){
                 const parent = channels.find(x => x.id == `${categoryId}`);
-                if(!parent) return await interaction.reply("Category doesn't exist!");
+                if(!parent) return await interaction.reply({content: "Category doesn't exist!", ephemeral: true});
                 parent.children.cache.find(x => x.id == channelId).delete();
             }else{
                 channels.find(x => x.id == channelId).delete();
             }
-            await interaction.reply(`Deleted **${channels.find(x => x.id == channelId).name}** channel!`);
+            await interaction.reply({content: `Deleted **${channels.find(x => x.id == channelId).name}** channel!`, ephemeral: true});
         }catch(err){
             console.log(err);
         }

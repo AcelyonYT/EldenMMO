@@ -4,7 +4,8 @@ const userSchema = new Schema({
     id: {type: String},
     name: {type: String},
     crystals: {type: Number, default: 0, min: 0},
-    coins: {type: Map, of: Number},
+    wallet: {type: Map, of: Number},
+    bank: {type: Map, of: Number},
     health: {type: Number, default: 100.00, min: 0, max: 100},
     mana: {type: Number, default: 25.00, min: 0, max: 25},
     level: {type: Number, default: 1},
@@ -65,7 +66,6 @@ const userSchema = new Schema({
     death: {type: Number, default: 0, min: 0, max: 100}, // handles death buildup
     stun: {type: Number, default: 0, min: 0, max: 100} // handles stun buildup
 });
-
 userSchema.methods.updateInventory = function(itemName, quantity){
     if(this.inventory.has(itemName)){
         const amount = this.inventory.get(itemName) + quantity;
@@ -81,6 +81,57 @@ userSchema.methods.updateInventory = function(itemName, quantity){
             this.inventory.set(itemName, quantity);
         }
     }
+}
+userSchema.methods.updateWallet = function(gold, silver, copper){
+    update("copper", "silver", "gold", copper, silver, gold, this.wallet);
+}
+userSchema.methods.updateBank = function(gold, silver, copper){
+    update("copper", "silver", "gold", copper, silver, gold, this.bank);
+}
+function update(string1, string2, string3, copper, silver, gold, map){
+    while(silver >= 100){
+        gold += 1;
+        silver -= 100;
+    }
+    while(copper >= 100){
+        silver += 1;
+        copper -= 100;
+    }
+    updateCoin(string1, copper, map);
+    updateCoin(string2, silver, map);
+    updateCoin(string3, gold, map);
+}
+function updateCoin(coinType, coin, coinCollection){
+    if(coinCollection.has(coinType)){
+        const amount = coinCollection.get(coinType) + coin;
+        if(amount <= 0){
+            coinCollection.set(coinType, 0);
+        }else{
+            coinCollection.set(coinType, amount);
+        }
+    }else{
+        if(coin > 0){
+            coinCollection.set(coinType, coin);
+        }else{
+            coinCollection.set(coinType, 0);
+        }
+    }
+    while(coinCollection.get("silver") >= 100 || coinCollection.get("copper") >= 100 ){
+        let higherCoin = 0;
+        let newCoin = 0;
+        if(coinCollection.get("silver") >= 100){
+            convertCoin("silver", "gold", newCoin, higherCoin, coinCollection);
+        }
+        if(coinCollection.get("copper") >= 100){
+            convertCoin("copper", "silver", newCoin, higherCoin, coinCollection);
+        }
+    }
+}
+function convertCoin(type, higherType, newCoin, higherCoin, coinCollection){
+    higherCoin += 1;
+    newCoin = coinCollection.get(type) - 100;
+    coinCollection.set(type, newCoin);
+    coinCollection.set(higherType, coinCollection.get(higherType) + higherCoin);
 }
 
 module.exports = userSchema;

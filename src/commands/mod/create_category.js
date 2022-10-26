@@ -18,6 +18,6 @@ module.exports = {
         if(app.utility.checkForStaffRole(interaction, role)) return;
         const text = interaction.options.getString("text");
         interaction.guild.channels.create({name: `${text}`, type: ChannelType.GuildCategory });
-        await interaction.reply(`Created **${text}** category!`);
+        await interaction.reply({content: `Created **${text}** category!`, ephemeral: true});
     }
 }

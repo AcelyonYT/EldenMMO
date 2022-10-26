@@ -28,20 +28,25 @@ module.exports = {
                 player = new playerModel({
                     id: interaction.member.id, 
                     name: interaction.user.tag, 
-                    coins: new Map(),
+                    wallet: new Map(),
+                    bank: new Map(),
                     cooldowns: new Map(), 
                     inventory: new Map(),
                     spellBook: new Map(),
                     pokebox: new Map()
                 });
                 try {
-                    await interaction.member.send("Data was created for you! Enjoy the bot and don't forget to check up on Acelyon YouTube!");
-                    await interaction.reply("Sent you a dm!");
+                    await interaction.member.send({content: "Data was created for you! Enjoy the bot and don't forget to check up on Acelyon YouTube!", ephemeral: true});
+                    await interaction.reply({content: "Sent you a dm!", ephemeral: true});
                 }
                 catch(err){
-                    await interaction.reply("Data was created for you! Enjoy the bot and don't forget to check up on Acelyon YouTube!");
-                    console.log("Cannot dm that user.");
+                    await interaction.reply({content: "Data was created for you! Enjoy the bot and don't forget to check up on Acelyon YouTube!", ephemeral: true});
                 }
+                // World Cooldowns
+                // player.cooldowns.set("beg", interaction.createdTimestamp);
+                // player.cooldowns.set("search", interaction.createdTimestamp);
+                // Daily cooldowns
+                // player.cooldowns.set("hourly", interaction.createdTimestamp);
                 // saves the data
                 player = await player.save();
             }

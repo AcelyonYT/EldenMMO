@@ -1,0 +1,16 @@
+{
+    "npcList": [
+        {
+            "name": "your mother",
+            "goodReply": "okay sweetheart here you go!"
+        },
+        {
+            "name": "your bestfriend",
+            "goodReply": "Yeah sure man anything for you!"
+        },
+        {
+            "name": "a homeless man",
+            "badReply": "Does it look like I have money for you."
+        }
+    ]
+}

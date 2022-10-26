@@ -44,7 +44,7 @@ module.exports = {
             let parent;
             if(category){
                 parent = interaction.guild.channels.cache.find(x => x.id == `${category}`);
-                if(!parent) return await interaction.reply("Category doesn't exist!");
+                if(!parent) return await interaction.reply({content: "Category doesn't exist!", ephemeral: true});
                 createChannel({interaction, parent}, text, type);
             }else{
                 createChannel({interaction, parent}, text, type);
@@ -74,7 +74,7 @@ async function createChannel(data, text, type){
                 name: `${text}`
             })
         break;
-        default: return interaction.reply("Invalid channel type")
+        default: return interaction.reply({content: "Invalid channel type", ephemeral: true})
     }
-    await interaction.reply(`Created **${text}** ${type} channel!`);
+    await interaction.reply({content: `Created **${text}** ${type} channel!`, ephemeral: true});
 }

@@ -10,9 +10,14 @@ module.exports = {
     async execute(app, interaction, data, embed){
         const {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        // if(player.cooldowns.get("search") > interaction.createdTimestamp){
+        //     await interaction.reply({content: `You can run **search** <t:${Math.round(player.cooldowns.get("search")/1000)}:R>`, ephemeral: true});
+        //     return;
+        // }
         const item = items.itemList[ app.utility.randomInt(0, items.itemList.length) ].name;
         player.updateInventory(item, 1);
-        await interaction.reply(`You searched the area and collected a **${item.split("_").join(" ")}**!`);
+        // await player.updateOne({$set: {"cooldowns.search": interaction.createdTimestamp + 600000}});
+        await interaction.reply({content: `You searched the area and collected a(n) **${item.split("_").join(" ")}**!`, ephemeral: true});
         await player.save();
     }
 }

@@ -60,9 +60,9 @@ module.exports = {
                 {name: "Latency:", value: `${Date.now() - interaction.createdTimestamp}ms`, inline: true},
                 {name: "API Latency:", value: `${Math.round(interaction.client.ws.ping)}ms`, inline: true}
             );
-            await interaction.reply({embeds: [embed]});
+            await interaction.reply({embeds: [embed], ephemeral: true});
         }else{
-            await interaction.reply("Pong!");
+            await interaction.reply({content: "Pong!", ephemeral: true});
         }
     }
 }
