@@ -1,5 +1,11 @@
 {
     "Adventure_Journal": {
-        "category": "books"
+        "category": "books",
+        "value": {
+            "sell": {
+                "copper": 30,
+                "silver": 1
+            }
+        }
     }
 }

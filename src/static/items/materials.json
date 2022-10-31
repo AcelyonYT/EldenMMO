@@ -1,29 +1,101 @@
 {
     "Herb": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
     },
     "Mushroom": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
     },
     "Flask": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 20
+            },
+            "sell": {
+                "copper": 10
+            }
+        }
     },
     "Blue_Mountain_Flower": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
     },
     "Moss": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
     },
     "Stick": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 5
+            },
+            "sell": {
+                "copper": 2
+            }
+        }
     },
     "Fiber": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 5
+            },
+            "sell": {
+                "copper": 2
+            }
+        }
     },
     "Rock": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 5
+            },
+            "sell": {
+                "copper": 2
+            }
+        }
     },
     "Red_Mountain_Flower": {
-        "category":"materials"
+        "category":"materials",
+        "value": {
+            "buy": {
+                "copper": 20
+            },
+            "sell": {
+                "copper": 10
+            }
+        }
     }
 }

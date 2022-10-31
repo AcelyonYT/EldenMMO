@@ -29,11 +29,11 @@ module.exports = {
         const title = `**${guildMember.user.tag}'s Inventory**`;
         embed.setTitle(title)
         .addFields(
-            {name: "Select a Category in the Select Menu", value: "Categories: Materials, Misc"}
+            {name: "Select a Category in the Select Menu", value: "Categories: Materials, Misc, Books, Weapons"}
         );
         const noItemEmbed = new EmbedBuilder().setTitle(title);
         noItemEmbed.addFields({name: `**No Items**`, value: `You don't have any items from this category`});
-        let materials = []; let misc = []; let books = [];
+        let materials = []; let misc = []; let books = []; let weapons = [];
         for( const [key, value] of player.inventory){
             if(value <= 0){
                 player.inventory.delete(key);
@@ -44,6 +44,7 @@ module.exports = {
                 if(item.group === 'materials') materials.push(itemString);
                 if(item.group === 'misc') misc.push(itemString);
                 if(item.group === 'books') books.push(itemString);
+                if(item.group === 'weapons') weapons.push(itemString);
             }
         }
         await player.save();
@@ -66,7 +67,12 @@ module.exports = {
                         label: "Books",
                         description: "Shows books in your inventory",
                         value: "books"
-                    }
+                    },
+                    {
+                        label: "Weapons",
+                        description: "Shows weapons in your inventory",
+                        value: "weapons"
+                    },
             )
         );
         const buttonMenuRow = new ActionRowBuilder().addComponents(
@@ -84,7 +90,7 @@ module.exports = {
         let reply = await interaction.reply({embeds: [embed], components: [selectMenuRow, buttonMenuRow], fetchReply: true});
         const filter = x => x.user.id === interaction.member.id;
         const collector = reply.createMessageComponentCollector({filter, time: 30000});
-        let materialEmbeds = []; let miscEmbeds = []; let booksEmbeds = [];
+        let materialEmbeds = []; let miscEmbeds = []; let booksEmbeds = []; let weaponsEmbed = [];
         app.utility.enableButtons(buttonMenuRow);
         collector.on("collect", async (x) => {
             switch(x.componentType){
@@ -98,6 +104,9 @@ module.exports = {
                         break;
                         case "books":
                             sendEmbedCategories(booksEmbeds, title, books, "Books", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "weapons":
+                            sendEmbedCategories(weaponsEmbed, title, weapons, "Weapons", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
                         break;
                     }
                 break;

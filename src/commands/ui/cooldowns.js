@@ -13,7 +13,7 @@ module.exports = {
         }]
     },
     async execute(app, interaction, data, embed) {
-        const {player} = data;
+        let {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
         let guildMember = interaction.member;
         if(interaction.options.get("player")){

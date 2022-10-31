@@ -16,8 +16,8 @@ module.exports = {
         }
         const item = items.itemList[ app.utility.randomInt(0, items.itemList.length) ].name;
         player.updateInventory(item, 1);
-        await player.updateOne({$set: {"cooldowns.search": interaction.createdTimestamp + 600000}});
-        await interaction.reply({content: `You searched the area and collected a(n) **${item.split("_").join(" ")}**!`, ephemeral: true});
+        await player.updateOne({$set: {"cooldowns.search": interaction.createdTimestamp + 300000}});
+        await interaction.reply({content: `You searched the area and collected a(n) **${item.split("_").join(" ")}**!`});
         await player.save();
     }
 }

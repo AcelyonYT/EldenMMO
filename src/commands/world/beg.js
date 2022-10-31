@@ -33,8 +33,8 @@ module.exports = {
         }else{
             embed.addFields({name: `You begged ${npc.name} and got nothing.`, value: `${npc.badReply}`});
         }
-        await player.updateOne({$set: {"cooldowns.beg": interaction.createdTimestamp + 300000}});
-        await interaction.reply({embeds: [embed], ephemeral: true});
+        await player.updateOne({$set: {"cooldowns.beg": interaction.createdTimestamp + 120000}});
+        await interaction.reply({embeds: [embed]});
         await player.save();
     }
 }

@@ -13,6 +13,7 @@ class Items {
                 file[item].group = group.split(".")[0];
                 file[item].name = item;
                 file[item].displayName = item.split("_").join(" ");
+                file[item].lowerCaseName = item.toLowerCase();
                 this.items.set(item, file[item]);
             }
         }
