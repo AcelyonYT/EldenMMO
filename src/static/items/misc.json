@@ -2,6 +2,28 @@
     "Key": {
         "category": "misc",
         "value": {
+            "sell": {
+                "copper": 5
+            }
+        }
+    },
+    "Small_Bomb": {
+        "category": "misc",
+        "value": {
+            "sell": {
+                "copper": 60
+            }
+        }
+    },
+    "Bandaid": {
+        "category": "misc",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
         }
     }
 }

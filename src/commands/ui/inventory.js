@@ -29,11 +29,13 @@ module.exports = {
         const title = `**${guildMember.user.tag}'s Inventory**`;
         embed.setTitle(title)
         .addFields(
-            {name: "Select a Category in the Select Menu", value: "Categories: Materials, Misc, Books, Weapons"}
+            {name: "Select a Category in the Select Menu", value: "Categories:\nMaterials\nMisc\nBooks\nWeapons\nBait\nFood\nArmor\nJewelery\nPotions\nRunes\nGlyphs"}
         );
         const noItemEmbed = new EmbedBuilder().setTitle(title);
         noItemEmbed.addFields({name: `**No Items**`, value: `You don't have any items from this category`});
         let materials = []; let misc = []; let books = []; let weapons = [];
+        let bait = []; let food = []; let armor = []; let jewelery = [];
+        let potions = []; let runes = []; let glyphs = [];
         for( const [key, value] of player.inventory){
             if(value <= 0){
                 player.inventory.delete(key);
@@ -45,6 +47,13 @@ module.exports = {
                 if(item.group === 'misc') misc.push(itemString);
                 if(item.group === 'books') books.push(itemString);
                 if(item.group === 'weapons') weapons.push(itemString);
+                if(item.group === 'bait') bait.push(itemString);
+                if(item.group === 'food') food.push(itemString);
+                if(item.group === 'armor') armor.push(itemString);
+                if(item.group === 'jewelery') jewelery.push(itemString);
+                if(item.group === 'potions') potions.push(itemString);
+                if(item.group === 'runes') runes.push(itemString);
+                if(item.group === 'glyphs') glyphs.push(itemString);
             }
         }
         await player.save();
@@ -73,6 +82,41 @@ module.exports = {
                         description: "Shows weapons in your inventory",
                         value: "weapons"
                     },
+                    {
+                        label: "Bait",
+                        description: "Shows bait in your inventory",
+                        value: "bait"
+                    },
+                    {
+                        label: "Food",
+                        description: "Shows food in your inventory",
+                        value: "food"
+                    },
+                    {
+                        label: "Armor",
+                        description: "Shows armor in your inventory",
+                        value: "armor"
+                    },
+                    {
+                        label: "Jewelery",
+                        description: "Shows jewelery in your inventory",
+                        value: "jewelery"
+                    },
+                    {
+                        label: "Potions",
+                        description: "Shows potions in your inventory",
+                        value: "potions"
+                    },
+                    {
+                        label: "Runes",
+                        description: "Shows runes in your inventory",
+                        value: "runes"
+                    },
+                    {
+                        label: "Glyphs",
+                        description: "Shows glyphs in your inventory",
+                        value: "glyphs"
+                    },
             )
         );
         const buttonMenuRow = new ActionRowBuilder().addComponents(
@@ -91,6 +135,8 @@ module.exports = {
         const filter = x => x.user.id === interaction.member.id;
         const collector = reply.createMessageComponentCollector({filter, time: 30000});
         let materialEmbeds = []; let miscEmbeds = []; let booksEmbeds = []; let weaponsEmbed = [];
+        let baitEmbeds = []; let foodEmbeds = []; let armorEmbeds = []; let jeweleryEmbeds = [];
+        let potionsEmbeds = []; let runesEmbeds = []; let glyphsEmbeds = [];
         app.utility.enableButtons(buttonMenuRow);
         collector.on("collect", async (x) => {
             switch(x.componentType){
@@ -107,6 +153,27 @@ module.exports = {
                         break;
                         case "weapons":
                             sendEmbedCategories(weaponsEmbed, title, weapons, "Weapons", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "bait":
+                            sendEmbedCategories(baitEmbeds, title, bait, "Bait", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "food":
+                            sendEmbedCategories(foodEmbeds, title, food, "Food", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "armor":
+                            sendEmbedCategories(armorEmbeds, title, armor, "Armor", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "jewelery":
+                            sendEmbedCategories(jeweleryEmbeds, title, jewelery, "Jewelery", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "potions":
+                            sendEmbedCategories(potionsEmbeds, title, potions, "Potions", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "runes":
+                            sendEmbedCategories(runesEmbeds, title, runes, "Runes", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
+                        break;
+                        case "glyphs":
+                            sendEmbedCategories(glyphsEmbeds, title, glyphs, "Glyphs", reply, interaction, {selectMenuRow, buttonMenuRow}, noItemEmbed);
                         break;
                     }
                 break;

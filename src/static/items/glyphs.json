@@ -1,0 +1,10 @@
+{
+    "Glyph_Of_Minor_Health": {
+        "category": "misc",
+        "value": {
+            "sell": {
+                "copper": 30
+            }
+        }
+    }
+}

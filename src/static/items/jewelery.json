@@ -1,0 +1,10 @@
+{
+    "Copper_Ring": {
+        "category": "jewelery",
+        "value": {
+            "sell": {
+                "copper": 20
+            }
+        }
+    }
+}

@@ -51,15 +51,14 @@ module.exports = {
         if(!cooldownEmbeds.find(x => x.data.title == `${guildMember.user.tag}'s Daily Cooldowns`) ? true : false){
             cooldownEmbeds = createEmbed(embeds, cooldownEmbeds, guildMember, "Daily");
         }
+        let world = ["beg", "search", "chop", "fish", "gather", "hunt", "mine", "skin"];
+        let daily = ["hourly"];
         for(const [key, value] of player.cooldowns){
             switch(key){
-                case "beg":
+                case `${world.find(x => x == key) ? world.find(x => x == key) : "beg"}`:
                     cooldownEmbeds[0].addFields({name: `__**${key}**__`, value: value <= interaction.createdTimestamp ? "Ready" : `<t:${Math.round(value/1000)}:R>`, inline: true});
                 break;
-                case "search":
-                    cooldownEmbeds[0].addFields({name: `__**${key}**__`, value: value <= interaction.createdTimestamp ? "Ready" : `<t:${Math.round(value/1000)}:R>`, inline: true});
-                break;
-                case "hourly":
+                case `${daily.find(x => x == key) ? daily.find(x => x == key) : "hourly"}`:
                     cooldownEmbeds[1].addFields({name: `__**${key}**__`, value: value <= interaction.createdTimestamp ? "Ready" : `<t:${Math.round(value/1000)}:R>`, inline: true});
                 break;
             }

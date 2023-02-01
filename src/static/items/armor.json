@@ -1,3 +1,26 @@
 {
-    
+    "Hide_Helmet": {
+        "category": "armor",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
+    "Oak_Small_Shield": {
+        "category": "armor",
+        "value": {
+            "sell": {
+                "copper": 10
+            }
+        }
+    },
+    "Wool_Shirt": {
+        "category": "armor",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    }
 }

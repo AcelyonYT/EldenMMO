@@ -40,6 +40,10 @@ class Utility {
     randomInt(min, max){
         return Math.floor(Math.random() * (max - min) ) + min;
     }
+
+    upperCaseEachWord(string){
+        return string.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.substring(1)).join("_");
+    }
 }
 
 module.exports = Utility;

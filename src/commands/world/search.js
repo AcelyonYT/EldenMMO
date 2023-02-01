@@ -10,14 +10,17 @@ module.exports = {
     async execute(app, interaction, data, embed){
         const {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.stamina < 15) return await interaction.reply("You don't have enough stamina, try resting for a bit!");
         if(player.cooldowns.get("search") > interaction.createdTimestamp){
             await interaction.reply({content: `You can run **search** <t:${Math.round(player.cooldowns.get("search")/1000)}:R>`, ephemeral: true});
             return;
         }
         const item = items.itemList[ app.utility.randomInt(0, items.itemList.length) ].name;
-        player.updateInventory(item, 1);
-        await player.updateOne({$set: {"cooldowns.search": interaction.createdTimestamp + 300000}});
-        await interaction.reply({content: `You searched the area and collected a(n) **${item.split("_").join(" ")}**!`});
+        const stam = 15;
+        await player.updateStamina(-stam);
+        await player.updateInventory(item, 1);
+        await player.updateOne({$set: {"cooldowns.search": interaction.createdTimestamp + 35000}});
+        await interaction.reply({content: `You searched the area and collected a(n) **${item.split("_").join(" ")}**!\n\`${player.stamina}/${player.maxStamina}\`\nYou lost ${stam} stamina`});
         await player.save();
     }
 }

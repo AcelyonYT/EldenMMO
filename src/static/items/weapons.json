@@ -1,9 +1,11 @@
 {
-    "Bow": {
+    "Wooden_Small_Bow": {
         "category": "weapons",
         "ammo": [
-            "Arrow"
+            "Arrow",
+            "Bone_Arrow"
         ],
+        "type": "light_bow",
         "value": {
             "buy": {
                 "copper": 80
@@ -15,6 +17,19 @@
     },
     "Arrow": {
         "category": "weapons",
+        "type": "arrow",
+        "value": {
+            "buy": {
+                "copper": 20
+            },
+            "sell": {
+                "copper": 10
+            }
+        }
+    },
+    "Bone_Arrow": {
+        "category": "weapons",
+        "type": "arrow",
         "value": {
             "buy": {
                 "copper": 10
@@ -29,6 +44,7 @@
         "ammo": [
             "308_Winchester_Bullet"
         ],
+        "type": "gun",
         "value": {
             "buy": {
                 "copper": 30,
@@ -42,6 +58,7 @@
     },
     "308_Winchester_Bullet": {
         "category": "weapons",
+        "type": "bullet",
         "value": {
             "buy": {
                 "copper": 10,
@@ -54,6 +71,7 @@
     },
     "Pickaxe": {
         "category": "weapons",
+        "type": "hammer",
         "value": {
             "buy": {
                 "copper": 70
@@ -65,6 +83,7 @@
     },
     "Wood_Cutters_Axe": {
         "category": "weapons",
+        "type": "axe",
         "value": {
             "buy": {
                 "copper": 50
@@ -76,12 +95,34 @@
     },
     "Fishing_Rod": {
         "category": "weapons",
+        "type": "misc",
         "value": {
             "buy": {
                 "copper": 30
             },
             "sell": {
                 "copper": 15
+            }
+        }
+    },
+    "Skinning_Knife": {
+        "category": "weapons",
+        "type": "dagger",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
+    },
+    "Iron_Dagger": {
+        "category": "weapons",
+        "type": "dagger",
+        "value": {
+            "sell": {
+                "copper": 10
             }
         }
     }

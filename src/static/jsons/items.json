@@ -1,23 +1,7 @@
 {
     "itemList": [
         {
-            "name": "Herb",
-            "category": "materials"
-        },
-        {
-            "name": "Mushroom",
-            "category": "materials"
-        },
-        {
             "name": "Flask",
-            "category": "materials"
-        },
-        {
-            "name": "Blue_Mountain_Flower",
-            "category": "materials"
-        },
-        {
-            "name": "Moss",
             "category": "materials"
         },
         {
@@ -29,15 +13,7 @@
             "category": "materials"
         },
         {
-            "name": "Fiber",
-            "category": "materials"
-        },
-        {
             "name": "Rock",
-            "category": "materials"
-        },
-        {
-            "name": "Red_Mountain_Flower",
             "category": "materials"
         },
         {

@@ -1,3 +1,13 @@
 {
-    
+    "Sip_Of_Health": {
+        "category": "potions",
+        "value": {
+            "buy": {
+                "copper": 20
+            },
+            "sell": {
+                "copper": 10
+            }
+        }
+    }
 }

@@ -36,43 +36,52 @@ module.exports = {
         let gold = interaction.options.getInteger("gold");
         let haveCoins;
         if(!copper && !silver && !gold){
-            return await interaction.reply({content: "You need to put the amount of coins you want to deposit", ephemeral: true});
+            return await interaction.reply({content: "You need to put the amount of coins you want to deposit"});
         }else if(copper && !silver && !gold){
             haveCoins = checkForCoin(player, interaction, "copper");
             if(haveCoins == 0) return;
             deposit(player, copper, 0, 0);
-            await interaction.reply({content: `You deposited **${copper}** copper coins.`, ephemeral: true});
+            await interaction.reply({content: `You deposited **${copper}** copper coins.`});
         }else if(copper && silver && !gold){
             haveCoins = checkForCoin(player, interaction, "copper");
             if(haveCoins == 0) return;
             haveCoins = checkForCoin(player, interaction, "silver");
             if(haveCoins == 0) return;
             deposit(player, copper, silver, 0);
-            await interaction.reply({content: `You deposited **${copper}** copper coins and **${silver}** silver coins.`, ephemeral: true});
+            await interaction.reply({content: `You deposited **${copper}** copper coins and **${silver}** silver coins.`});
         }else if(copper && !silver && gold){
             haveCoins = checkForCoin(player, interaction, "copper");
             if(haveCoins == 0) return;
             haveCoins = checkForCoin(player, interaction, "gold");
             if(haveCoins == 0) return;
             deposit(player, copper, 0, gold);
-            await interaction.reply({content: `You deposited **${copper}** copper coins and **${gold}** gold coins.`, ephemeral: true});
+            await interaction.reply({content: `You deposited **${copper}** copper coins and **${gold}** gold coins.`});
         }else if(!copper && silver && !gold){
             haveCoins = checkForCoin(player, interaction, "silver");
             if(haveCoins == 0) return;
             deposit(player, 0, silver, 0);
-            await interaction.reply({content: `You deposited **${silver}** silver coins.`, ephemeral: true});
+            await interaction.reply({content: `You deposited **${silver}** silver coins.`});
         }else if(!copper && silver && gold){
             haveCoins = checkForCoin(player, interaction, "silver");
             if(haveCoins == 0) return;
             haveCoins = checkForCoin(player, interaction, "gold");
             if(haveCoins == 0) return;
             deposit(player, 0, silver, gold);
-            await interaction.reply({content: `You deposited **${silver}** silver coins and **${gold}** gold coins.`, ephemeral: true});
+            await interaction.reply({content: `You deposited **${silver}** silver coins and **${gold}** gold coins.`});
+        }else if(copper && silver && gold){
+            haveCoins = checkForCoin(player, interaction, "copper");
+            if(haveCoins == 0) return;
+            haveCoins = checkForCoin(player, interaction, "silver");
+            if(haveCoins == 0) return;
+            haveCoins = checkForCoin(player, interaction, "gold");
+            if(haveCoins == 0) return;
+            deposit(player, copper, silver, gold);
+            await interaction.reply({content: `You deposited **${copper}** copper coins, **${silver}** silver coins, and **${gold}** gold coins.`});
         }else{
             haveCoins = checkForCoin(player, interaction, "gold");
             if(haveCoins == 0) return;
             deposit(player, 0, 0, gold);
-            await interaction.reply({content: `You deposited **${gold}** gold coins`, ephemeral: true});
+            await interaction.reply({content: `You deposited **${gold}** gold coins`});
         }
     }
 }

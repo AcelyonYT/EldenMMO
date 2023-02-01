@@ -1,0 +1,292 @@
+{
+    "profession": [
+        {
+            "name": "blacksmithing",
+            "description": "Crafts items out of metal, weapons and armor mainly, heavy armor.",
+            "recommended": "mining",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "leatherworking",
+            "description": "Crafts items out of hides, armor mainly, medium armor.",
+            "recommended": "skinning",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "woodworking",
+            "description": "Crafts items out of wood, weapons and shields.",
+            "recommended": "logging",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "tailoring",
+            "description": "Crafts items out of cloths, armor mainly, light armor/cloths.",
+            "recommended": "anything",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "mining",
+            "description": "Allows you to mine ore.",
+            "recommended": "blacksmithing, engineering, jewelcrafting",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "herbalism",
+            "description": "Allows you to gather unique plants.",
+            "recommended": "inscription, alchemy",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "skinning",
+            "description": "Allows you to skin animals.",
+            "recommended": "leatherworking",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "alchemy",
+            "description": "Crafts items out of plants and other materials to make potions.",
+            "recommended": "herbalism",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "enchanting",
+            "description": "Enchant/disenchant items.",
+            "recommended": "anything",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "runecrafting",
+            "description": "Crafts runes that give magical traits. Can also be used to infuse runes into Weapons.",
+            "recommended": "mining",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "logging",
+            "description": "Allows you to chop wood.",
+            "recommended": "woodworking",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "jewelcrafting",
+            "description": "Crafts items out of gems and ore.",
+            "recommended": "mining",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "engineering",
+            "description": "Crafts inventions(items) that help users.",
+            "recommended": "mining",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "inscription",
+            "description": "Crafts items with ink and paper.",
+            "recommended": "herbalism",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "fishing",
+            "description": "Allows you to catch fish",
+            "recommended": "None, everyone can learn this.",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+       { 
+            "name": "cooking",
+            "description": "Crafts items out of ingredients.",
+            "recommended": "None, everyone can learn this.",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "survival",
+            "description": "Crafts items that are good for survival.",
+            "recommended": "None, everyone can learn this.",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        },
+        {
+            "name": "firstaid",
+            "description": "Crafts items that can heal wounds.",
+            "recommended": "None, everyone can learn this.",
+            "priceToLearn": {
+                "silver": 1
+            },
+            "priceOfNextTier": {
+                "tier2": {
+                    "silver": 10
+                },
+                "tier3": {
+                    "silver": 20
+                }
+            }
+        }
+    ]
+}

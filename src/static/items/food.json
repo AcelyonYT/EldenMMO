@@ -1,0 +1,73 @@
+{
+    "Salt_Pile": {
+        "category": "food",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
+    },
+    "Raw_Salmon": {
+        "category": "food",
+        "value": {
+            "buy": {
+                "copper": 20
+            },
+            "sell": {
+                "copper": 10
+            }
+        }
+    },
+    "Raw_Largemouth_Bass": {
+        "category": "food",
+        "value": {
+            "buy": {
+                "copper": 60
+            },
+            "sell": {
+                "copper": 30
+            }
+        }
+    },
+    "Raw_Catfish": {
+        "category": "food",
+        "value": {
+            "buy": {
+                "copper": 90
+            },
+            "sell": {
+                "copper": 45
+            }
+        }
+    },
+    "Raw_Venison": {
+        "category": "food",
+        "value": {
+            "buy": {
+                "copper": 40
+            },
+            "sell": {
+                "copper": 20
+            }
+        }
+    },
+    "Raw_Boar_Meat": {
+        "category": "food",
+        "value": {
+            "sell": {
+                "copper": 40
+            }
+        }
+    },
+    "Raw_Moose_Meat": {
+        "category": "food",
+        "value": {
+            "sell": {
+                "copper": 60
+            }
+        }
+    }
+}

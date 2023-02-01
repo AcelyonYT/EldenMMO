@@ -2,6 +2,7 @@ const { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder,
     SelectMenuBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
 const weapons = require("../../static/items/weapons.json");
 const materials = require("../../static/items/materials.json");
+const bait = require("../../static/items/bait.json");
 
 let embeds = [];
 let actionRows = [];
@@ -29,6 +30,11 @@ module.exports = {
                 type: ApplicationCommandOptionType.Subcommand
             },
             {
+                name: "bait",
+                description: "opens the bait shop",
+                type: ApplicationCommandOptionType.Subcommand
+            },
+            {
                 name: "sell",
                 description: "Sell an item",
                 type: ApplicationCommandOptionType.Subcommand
@@ -45,6 +51,9 @@ module.exports = {
             break;
             case "materials":
                 openShop(app, interaction, embed, materials, "Materials");
+            break;
+            case "bait":
+                openShop(app, interaction, embed, bait, "Bait");
             break;
             case "sell":
                 sell(app, interaction, player);
@@ -92,7 +101,7 @@ async function sell(app, interaction, player){
                 .setCustomId(`select${j}`)
                 .setPlaceholder("Nothing selected")
         );
-        selectMenuRow = addOptionsToMenu(labels, descriptions, values, selectMenuRow, 4, offset, j);
+        selectMenuRow = addOptionsToMenu(labels, descriptions, values, selectMenuRow, 4, offset);
         actionRows.push(selectMenuRow);
         offset += 4;
     }
@@ -173,7 +182,7 @@ async function sell(app, interaction, player){
                                             .setCustomId(`select${j}`)
                                             .setPlaceholder("Nothing selected")
                                     );
-                                    selectMenuRow = addOptionsToMenu(labels, descriptions, values, selectMenuRow, 4, _offset, j);
+                                    selectMenuRow = addOptionsToMenu(labels, descriptions, values, selectMenuRow, 4, _offset);
                                     actionRows.push(selectMenuRow);
                                     _offset = _offset + 4;
                                 }
@@ -307,32 +316,12 @@ async function openShop(app, interaction, embed, itemType, type){
                             }else{
                                 let curCop = updatedPlayer.wallet.get("copper");
                                 let curSil = updatedPlayer.wallet.get("silver");
+                                let curGold = updatedPlayer.wallet.get("gold");
                                 let newCopVal = -copper;
                                 let newSilVal = -silver;
-                                if((curCop < copper || curSil <= silver) && updatedPlayer.wallet.get("gold") > 0){
-                                    if(curSil <= silver && updatedPlayer.wallet.get("gold") > 0){
-                                        while(curSil <= silver && updatedPlayer.wallet.get("gold") > 0){
-                                            curSil = curSil + 100;
-                                            gold -= 1;
-                                        }
-                                    }
-                                    newSilVal = curSil - silver;
-                                    if(curCop < copper){
-                                        while(curCop < copper){
-                                            curCop = curCop + 100;
-                                            newSilVal -= 1;
-                                        }
-                                    }
-                                    newCopVal = curCop - copper;
-                                    await updatedPlayer.updateOne({
-                                        $set: {
-                                            [`wallet.silver`]: newSilVal,
-                                            [`wallet.copper`]: newCopVal
-                                        },
-                                        $inc: {
-                                            [`wallet.gold`]: gold
-                                        }
-                                    });
+                                let newGoldVal = -gold;
+                                if((curCop < copper || curSil <= silver)){
+                                    await updatedPlayer.updateWalletConvertHighToLow(copper, silver, gold, curCop, curSil, curGold, newCopVal, newSilVal, newGoldVal);
                                 }else{
                                     await updatedPlayer.updateWallet(gold, newSilVal, newCopVal);
                                 }
@@ -361,7 +350,7 @@ async function openShop(app, interaction, embed, itemType, type){
         await interaction.followUp("You ran out of time!");
     });
 }
-function addOptionsToMenu(labels, descriptions, values, selectMenuRow, max, offset, j){
+function addOptionsToMenu(labels, descriptions, values, selectMenuRow, max, offset){
     for(let i = 0; i < labels.length; i++){
         let newIndex = i + offset;
         if(i > (max - 1)){

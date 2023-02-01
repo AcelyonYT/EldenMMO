@@ -33,8 +33,11 @@ module.exports = {
                     cooldowns: new Map(), 
                     inventory: new Map(),
                     spellBook: new Map(),
-                    pokebox: new Map()
+                    pokebox: new Map(),
+                    professions: new Map()
                 });
+                if(player.wallet.size == 0){ player.updateWallet(0, 0, 0) }
+                if(player.bank.size == 0){ player.updateBank(0, 0, 0) }
                 try {
                     await interaction.member.send({content: "Data was created for you! Enjoy the bot and don't forget to check up on Acelyon YouTube!", ephemeral: true});
                     await interaction.reply({content: "Sent you a dm!", ephemeral: true});

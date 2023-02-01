@@ -1,0 +1,24 @@
+{
+    "Redworms": {
+        "category": "bait",
+        "value": {
+            "buy": {
+                "copper": 10
+            },
+            "sell": {
+                "copper": 5
+            }
+        }
+    },
+    "Nightcrawlers": {
+        "category": "bait",
+        "value": {
+            "buy": {
+                "copper": 20
+            },
+            "sell": {
+                "copper": 10
+            }
+        }
+    }
+}

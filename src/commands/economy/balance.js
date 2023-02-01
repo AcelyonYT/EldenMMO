@@ -23,8 +23,6 @@ module.exports = {
                 return;
             }
         }
-        if(player.wallet.size == 0){ player.updateWallet(0, 0, 0) }
-        if(player.bank.size == 0){ player.updateBank(0, 0, 0) }
         let copper = player.wallet.get("copper");
         let silver = player.wallet.get("silver");
         let gold = player.wallet.get("gold");

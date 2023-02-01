@@ -1,0 +1,232 @@
+{
+    "recipebook": [
+        {
+            "name": "blacksmithing",
+            "recipes": [
+                {
+                    "name": "Iron Dagger",
+                    "tier": 1,
+                    "materials": {
+                        "Iron_Bar": 1,
+                        "Leather_Strips": 1
+                    },
+                    "item": "Iron_Dagger",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "leatherworking",
+            "recipes": [
+                {
+                    "name": "Hide Helmet",
+                    "tier": 1,
+                    "materials": {
+                        "Ruined_Hide": 2,
+                        "Leather_Strips": 1
+                    },
+                    "item": "Hide_Helmet",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "woodworking",
+            "recipes": [
+                {
+                    "name": "Oak Small Shield",
+                    "tier": 1,
+                    "materials": {
+                        "Oak_Wood": 2,
+                        "Leather_Strips": 1
+                    },
+                    "item": "Oak_Small_Shield",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "tailoring",
+            "recipes": [
+                {
+                    "name": "Wool Shirt",
+                    "tier": 1,
+                    "materials": {
+                        "Wool": 10
+                    },
+                    "item": "Wool_Shirt",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "alchemy",
+            "recipes": [
+                {
+                    "name": "Sip Of Health",
+                    "tier": 1,
+                    "materials": {
+                        "Herb": 1,
+                        "Mushroom": 1,
+                        "Flask": 1
+                    },
+                    "item": "Sip_Of_Health",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "enchanting",
+            "enchantments": [
+                {
+                    "name": "Minor Health",
+                    "tier": 1,
+                    "enchant": "Minor_Health",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "runecrafting",
+            "recipes": [
+                {
+                    "name": "Rune Of Fire",
+                    "tier": 1,
+                    "materials": {
+                        "Fire_Essence": 1,
+                        "Empty_Rune": 1
+                    },
+                    "item": "Rune_Of_Fire",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "jewelcrafting",
+            "recipes": [
+                {
+                    "name": "Copper Ring",
+                    "tier": 1,
+                    "materials": {
+                        "Copper_Bar": 1
+                    },
+                    "item": "Copper_Ring",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "engineering",
+            "recipes": [
+                {
+                    "name": "Small Bomb",
+                    "tier": 1,
+                    "materials": {
+                        "Iron_Bar": 1,
+                        "Gunpowder": 1
+                    },
+                    "item": "Small_Bomb",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "inscription",
+            "recipes": [
+                {
+                    "name": "Glyph Of Minor Health",
+                    "tier": 1,
+                    "materials": {
+                        "Parchment": 1,
+                        "Red_Ink": 1
+                    },
+                    "item": "Glyph_Of_Minor_Health",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "cooking",
+            "recipes": [
+                {
+                    "name": "Cooked Salmon",
+                    "tier": 1,
+                    "materials": {
+                        "Raw_Salmon": 1,
+                        "Salt_Pile": 1
+                    },
+                    "item": "Cooked_Salmon",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "survival",
+            "recipes": [
+            ]
+        },
+        {
+            "name": "mining",
+            "recipes": [
+            ]
+        },
+        {
+            "name": "logging",
+            "recipes": [
+            ]
+        },
+        {
+            "name": "herbalism",
+            "recipes": [
+            ]
+        },
+        {
+            "name": "fishing",
+            "recipes": [
+            ]
+        },
+        {
+            "name": "skinning",
+            "recipes": [
+            ]
+        },
+        {
+            "name": "firstaid",
+            "recipes": [
+                {
+                    "name": "Bandaid",
+                    "tier": 1,
+                    "materials": {
+                        "Linen_Cloth": 1
+                    },
+                    "item": "Bandaid",
+                    "value": {
+                        "copper": 10
+                    }
+                }
+            ]
+        }
+    ]
+}

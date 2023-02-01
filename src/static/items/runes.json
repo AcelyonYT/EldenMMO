@@ -1,0 +1,10 @@
+{
+    "Rune_Of_Fire": {
+        "category": "runes",
+        "value": {
+            "sell": {
+                "copper": 20
+            }
+        }
+    }
+}

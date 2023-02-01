@@ -1,0 +1,90 @@
+{
+    "landAnimals": [
+        {
+            "name": "White_Tail_Deer",
+            "tier": 1,
+            "drops": [
+                "Raw_Venison"
+            ],
+            "skin": {
+                "tier1": [
+                    "Ruined_Hide"
+                ],
+                "tier2": [
+                    "Ruined_Hide",
+                    "Normal_Hide"
+                ],
+                "tier3": [
+                    "Ruined_Hide",
+                    "Normal_Hide",
+                    "Quality_Hide"
+                ]
+            }
+        },
+        {
+            "name": "Boar",
+            "tier": 2,
+            "drops": [
+                "Raw_Boar_Meat"
+            ],
+            "skin": {
+                "tier1": [
+                    "Ruined_Hide"
+                ],
+                "tier2": [
+                    "Ruined_Hide",
+                    "Normal_Hide"
+                ],
+                "tier3": [
+                    "Ruined_Hide",
+                    "Normal_Hide",
+                    "Quality_Hide"
+                ]
+            }
+        },
+        {
+            "name": "Moose",
+            "tier": 2,
+            "drops": [
+                "Raw_Moose_Meat"
+            ],
+            "skin": {
+                "tier1": [
+                    "Ruined_Hide"
+                ],
+                "tier2": [
+                    "Ruined_Hide",
+                    "Normal_Hide"
+                ],
+                "tier3": [
+                    "Ruined_Hide",
+                    "Normal_Hide",
+                    "Quality_Hide"
+                ]
+            }
+        }
+    ],
+    "waterAnimals": [
+        {
+            "name": "Salmon",
+            "tier": 1,
+            "drops": [
+                "Raw_Salmon"
+            ]
+        },
+        {
+            "name": "Largemouth_Bass",
+            "tier": 2,
+            "drops": [
+                "Raw_Largemouth_Bass"
+            ]
+        },
+        {
+            "name": "Catfish",
+            "tier": 3,
+            "drops": [
+                "Raw_Catfish"
+            ]
+        }
+    ]
+}

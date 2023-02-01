@@ -17,7 +17,7 @@ module.exports = {
         const item = items.itemList[ app.utility.randomInt(0, items.itemList.length) ].name;
         player.updateInventory(item, 1);
         await player.updateOne({$set: {"cooldowns.hourly": interaction.createdTimestamp + 3600000}});
-        await interaction.reply({content: `You recieved a(n) **${item.split("_").join(" ")}**!`, ephemeral: true});
+        await interaction.reply({content: `You recieved a(n) **${item.split("_").join(" ")}**!`});
         await player.save();
     }
 }
