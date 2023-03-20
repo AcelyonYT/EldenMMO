@@ -1,2 +1,2 @@
-# ytCommentsBot
-a bot made from youtube comments and my own ideas
+# EldenMMO
+Contains Elden Ring math and it is implemented into a MMO theme
