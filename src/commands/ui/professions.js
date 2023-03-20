@@ -14,6 +14,7 @@ module.exports = {
     async execute(app, interaction, data, embed){
         let {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         let guildMember = interaction.member;
         if(interaction.options.get("player")){
             guildMember = interaction.options.getMember("player");

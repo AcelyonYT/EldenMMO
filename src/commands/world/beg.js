@@ -10,6 +10,7 @@ module.exports = {
     async execute(app, interaction, data, embed) {
         const {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         if(player.cooldowns.get("beg") > interaction.createdTimestamp){
             await interaction.reply({content: `You can run **beg** <t:${Math.round(player.cooldowns.get("beg")/1000)}:R>`, ephemeral: true});
             return;

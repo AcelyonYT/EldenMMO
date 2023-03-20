@@ -16,7 +16,7 @@ const userSchema = new Schema({
     maxStamina: {type: Number, default: 96},
     // Level
     crystals: {type: Number, default: 0, min: 0},
-    level: {type: Number, default: 1},
+    level: {type: Number, default: 1, max: 200},
     cooldowns: {type: Map, of: Number}, // cooldowns for commands
     equipment: { // equip player is wearing
         // weapons
@@ -28,9 +28,15 @@ const userSchema = new Schema({
         bolts: [{type: String}], // bolts equipped, up to 2 can be equiped
         // armor
         helmet: {type: String}, // equipped helmet
+        shoulders: {type: String}, // equipped shoulders
         chest: {type: String}, // equipped chestplate
         hands: {type: String}, // equipped hand attire
+        wrist: {type: String}, // equipped wrist
+        waist: {type: String}, // equipped waist
         leggings: {type: String}, // equipped leggings
+        feet: {type: String}, // equipped feet
+        neck: {type: String}, // equipped necklace
+        rings: [{type: String}], // equippied rings
         // side items
         trinkets: [{type: String}], // equipped trinkets, up to 1, can be increased by items in inventory
         pouch: [{type: String}] // equipped items in the pouch, up to 6
@@ -108,8 +114,12 @@ const userSchema = new Schema({
             enchantment: {type: String}, // actual item name
             value: {type: Map, of: Number} // how much coins
         }
-    ]
+    ],
+    resting: {type: Boolean, default: false}
 });
+userSchema.methods.updateRest = function(booleanValue){
+    this.resting = booleanValue;
+}
 userSchema.methods.updateStamina = function(amount){
     let maxStam = getMaxStamina(this.endurance);
     if(this.stamina + amount >= maxStam){

@@ -1,17 +1,28 @@
 {
     "Herb": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "buy": {
                 "copper": 10
             },
             "sell": {
                 "copper": 5
+            }
+        }
+    },
+    "Green_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
             }
         }
     },
     "Mushroom": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "buy": {
                 "copper": 10
@@ -21,8 +32,18 @@
             }
         }
     },
+    "Brown_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
     "Flask": {
         "category": "materials",
+        "type": "object",
         "value": {
             "buy": {
                 "copper": 20
@@ -34,22 +55,43 @@
     },
     "Blue_Mountain_Flower": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "sell": {
                 "copper": 5
+            }
+        }
+    },
+    "Blue_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
             }
         }
     },
     "Moss": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "sell": {
                 "copper": 5
             }
         }
     },
+    "Moss_Green_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
     "Stick": {
         "category": "materials",
+        "type": "other",
         "value": {
             "sell": {
                 "copper": 2
@@ -58,14 +100,25 @@
     },
     "Fiber": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "sell": {
                 "copper": 2
             }
         }
     },
+    "Fiber_Green_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
     "Rock": {
         "category": "materials",
+        "type": "stone",
         "value": {
             "sell": {
                 "copper": 2
@@ -74,14 +127,34 @@
     },
     "Red_Mountain_Flower": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "sell": {
                 "copper": 10
             }
         }
     },
+    "Red_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
     "Purple_Mountain_Flower": {
         "category": "materials",
+        "type": "plant",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
+    "Purple_Ink": {
+        "category": "materials",
+        "type": "ink",
         "value": {
             "sell": {
                 "copper": 15
@@ -90,14 +163,25 @@
     },
     "Nightshade": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "sell": {
                 "copper": 50
             }
         }
     },
+    "Dark_Purple_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
     "Golden_Rose": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "sell": {
                 "copper": 80,
@@ -105,16 +189,36 @@
             }
         }
     },
+    "Gold_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
     "Fire_Lily": {
         "category": "materials",
+        "type": "plant",
         "value": {
             "sell": {
                 "copper": 90
             }
         }
     },
+    "Fire_Ink": {
+        "category": "materials",
+        "type": "ink",
+        "value": {
+            "sell": {
+                "copper": 15
+            }
+        }
+    },
     "Parchment": {
         "category": "materials",
+        "type": "paper",
         "value": {
             "buy": {
                 "copper": 10
@@ -124,16 +228,9 @@
             }
         }
     },
-    "Red_Ink": {
-        "category": "materials",
-        "value": {
-            "sell": {
-                "copper": 15
-            }
-        }
-    },
     "Empty_Rune": {
         "category": "materials",
+        "type": "rune",
         "value": {
             "buy": {
                 "copper": 20
@@ -145,6 +242,7 @@
     },
     "Gunpowder": {
         "category": "materials",
+        "type": "powder",
         "value": {
             "buy": {
                 "copper": 50
@@ -156,6 +254,7 @@
     },
     "Linen_Cloth": {
         "category": "materials",
+        "type": "cloth",
         "value": {
             "buy": {
                 "copper": 10
@@ -167,6 +266,7 @@
     },
     "Wool": {
         "category": "materials",
+        "type": "cloth",
         "value": {
             "buy": {
                 "copper": 10
@@ -178,6 +278,19 @@
     },
     "Oak_Wood": {
         "category": "materials",
+        "type": "rough_wood",
+        "value": {
+            "buy": {
+                "copper": 60
+            },
+            "sell": {
+                "copper": 45
+            }
+        }
+    },
+    "Sanded_Oak_Wood": {
+        "category": "materials",
+        "type": "sanded_wood",
         "value": {
             "buy": {
                 "copper": 60
@@ -189,6 +302,16 @@
     },
     "Maple_Wood": {
         "category": "materials",
+        "type": "rough_wood",
+        "value": {
+            "sell": {
+                "copper": 70
+            }
+        }
+    },
+    "Sanded_Maple_Wood": {
+        "category": "materials",
+        "type": "sanded_wood",
         "value": {
             "sell": {
                 "copper": 70
@@ -197,6 +320,16 @@
     },
     "Alder_Wood": {
         "category": "materials",
+        "type": "rough_wood",
+        "value": {
+            "sell": {
+                "silver": 1
+            }
+        }
+    },
+    "Sanded_Alder_Wood": {
+        "category": "materials",
+        "type": "sanded_wood",
         "value": {
             "sell": {
                 "silver": 1
@@ -205,6 +338,7 @@
     },
     "Copper_Ore": {
         "category": "materials",
+        "type": "ore",
         "value": {
             "buy": {
                 "copper": 50
@@ -216,6 +350,7 @@
     },
     "Tin_Ore": {
         "category": "materials",
+        "type": "ore",
         "value": {
             "sell": {
                 "copper": 40
@@ -224,6 +359,7 @@
     },
     "Iron_Ore": {
         "category": "materials",
+        "type": "ore",
         "value": {
             "sell": {
                 "copper": 80
@@ -232,6 +368,7 @@
     },
     "Lead_Ore": {
         "category": "materials",
+        "type": "ore",
         "value": {
             "sell": {
                 "silver": 1
@@ -240,6 +377,7 @@
     },
     "Silver_Ore": {
         "category": "materials",
+        "type": "ore",
         "value": {
             "sell": {
                 "copper": 20,
@@ -249,6 +387,7 @@
     },
     "Tungsten_Ore": {
         "category": "materials",
+        "type": "ore",
         "value": {
             "sell": {
                 "copper": 40,
@@ -258,6 +397,7 @@
     },
     "Copper_Bar": {
         "category": "materials",
+        "type": "metal",
         "value": {
             "sell": {
                 "copper": 60
@@ -266,6 +406,7 @@
     },
     "Tin_Bar": {
         "category": "materials",
+        "type": "metal",
         "value": {
             "sell": {
                 "copper": 80
@@ -274,6 +415,7 @@
     },
     "Iron_Bar": {
         "category": "materials",
+        "type": "metal",
         "value": {
             "sell": {
                 "silver": 1
@@ -282,6 +424,7 @@
     },
     "Lead_Bar": {
         "category": "materials",
+        "type": "metal",
         "value": {
             "sell": {
                 "copper": 20,
@@ -291,6 +434,7 @@
     },
     "Silver_Bar": {
         "category": "materials",
+        "type": "metal",
         "value": {
             "sell": {
                 "copper": 40,
@@ -300,6 +444,7 @@
     },
     "Tungsten_Bar": {
         "category": "materials",
+        "type": "metal",
         "value": {
             "sell": {
                 "copper": 60,
@@ -307,8 +452,18 @@
             }
         }
     },
+    "Topaz": {
+        "category": "materials",
+        "type": "gem",
+        "value": {
+            "sell": {
+                "copper": 30
+            }
+        }
+    },
     "Coal": {
         "category": "materials",
+        "type": "other",
         "value": {
             "buy": {
                 "copper": 40
@@ -320,6 +475,7 @@
     },
     "Leather_Strips": {
         "category": "materials",
+        "type": "other",
         "value": {
             "buy": {
                 "copper": 10
@@ -331,6 +487,7 @@
     },
     "Ruined_Hide": {
         "category": "materials",
+        "type": "hide",
         "value": {
             "buy": {
                 "copper": 40
@@ -342,6 +499,7 @@
     },
     "Normal_Hide": {
         "category": "materials",
+        "type": "hide",
         "value": {
             "sell": {
                 "copper": 40
@@ -350,9 +508,46 @@
     },
     "Quality_Hide": {
         "category": "materials",
+        "type": "hide",
         "value": {
             "sell": {
                 "copper": 60
+            }
+        }
+    },
+    "Poor_Leather": {
+        "category": "materials",
+        "type": "leather",
+        "value": {
+            "sell": {
+                "copper": 40
+            }
+        }
+    },
+    "Leather": {
+        "category": "materials",
+        "type": "leather",
+        "value": {
+            "sell": {
+                "copper": 60
+            }
+        }
+    },
+    "Quality_Leather": {
+        "category": "materials",
+        "type": "leather",
+        "value": {
+            "sell": {
+                "copper": 80
+            }
+        }
+    },
+    "Fire_Essence": {
+        "category": "materials",
+        "type": "essence",
+        "value": {
+            "sell": {
+                "copper": 50
             }
         }
     }

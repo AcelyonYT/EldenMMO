@@ -9,6 +9,7 @@ module.exports = {
     async execute(app, interaction, data, embed){
         let {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         if(player.professions.get("logging") == null) return await interaction.reply("You need the logging profession to use this command!");
         if(!player.inventory.get("Wood_Cutters_Axe")) return await interaction.reply("You don't have a wood cutting axe to chop wood!");
         if(player.stamina < 15) return await interaction.reply("You don't have enough stamina, try resting for a bit!");

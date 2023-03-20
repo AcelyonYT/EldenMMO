@@ -1,9 +1,25 @@
 {
+    "Poor_Hide_Helmet": {
+        "category": "armor",
+        "value": {
+            "sell": {
+                "copper": 10
+            }
+        }
+    },
     "Hide_Helmet": {
         "category": "armor",
         "value": {
             "sell": {
                 "copper": 15
+            }
+        }
+    },
+    "Quality_Hide_Helmet": {
+        "category": "armor",
+        "value": {
+            "sell": {
+                "copper": 25
             }
         }
     },

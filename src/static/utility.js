@@ -22,11 +22,13 @@ class Utility {
         return;
     }
 
-    enableButtons(buttonMenuRow){
-        for(let i = 0; i < buttonMenuRow.components.length; i++){
-            buttonMenuRow.components[i].setDisabled(false);
-        }
-    }
+    enableButtons(buttonMenuRow){ return buttonMenuRow.components.forEach( x => x.setDisabled(false)); }
+
+    disableButtons(buttonMenuRow){ return buttonMenuRow.components.forEach( x => x.setDisabled(true)); }
+
+    enableButtonId(buttonMenuRow, id){ return buttonMenuRow.components.forEach( x => { if(x.data.custom_id == id) x.setDisabled(false); }); }
+
+    disableButtonId(buttonMenuRow, id){ return buttonMenuRow.components.forEach( x => { if(x.data.custom_id == id) x.setDisabled(true); }); }
 
     checkForStaffRole(interaction, role){
         if(!role) {
@@ -43,6 +45,23 @@ class Utility {
 
     upperCaseEachWord(string){
         return string.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.substring(1)).join("_");
+    }
+
+    addOptions(labels, descriptions, values, selectMenuRow, max, offset){
+        for(let i = 0; i < max; i++){
+            let newIndex = i + offset;
+            if(!labels[newIndex]){
+                break;
+            }
+            selectMenuRow.components[0].addOptions(
+                {
+                    label: labels[newIndex],
+                    description: descriptions[newIndex],
+                    value: values[newIndex]
+                }
+            );
+        }
+        return selectMenuRow;
     }
 }
 

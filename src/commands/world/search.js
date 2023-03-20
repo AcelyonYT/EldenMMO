@@ -10,6 +10,7 @@ module.exports = {
     async execute(app, interaction, data, embed){
         const {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         if(player.stamina < 15) return await interaction.reply("You don't have enough stamina, try resting for a bit!");
         if(player.cooldowns.get("search") > interaction.createdTimestamp){
             await interaction.reply({content: `You can run **search** <t:${Math.round(player.cooldowns.get("search")/1000)}:R>`, ephemeral: true});

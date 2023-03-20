@@ -21,13 +21,37 @@
             "name": "leatherworking",
             "recipes": [
                 {
+                    "name": "Poor Hide Helmet",
+                    "tier": 1,
+                    "materials": {
+                        "Poor_Leather": 2,
+                        "Leather_Strips": 1
+                    },
+                    "item": "Poor_Hide_Helmet",
+                    "value": {
+                        "copper": 10
+                    }
+                },
+                {
                     "name": "Hide Helmet",
                     "tier": 1,
                     "materials": {
-                        "Ruined_Hide": 2,
+                        "Leather": 2,
                         "Leather_Strips": 1
                     },
                     "item": "Hide_Helmet",
+                    "value": {
+                        "copper": 10
+                    }
+                },
+                {
+                    "name": "Quality Hide Helmet",
+                    "tier": 1,
+                    "materials": {
+                        "Quality_Leather": 2,
+                        "Leather_Strips": 1
+                    },
+                    "item": "Quality_Hide_Helmet",
                     "value": {
                         "copper": 10
                     }
@@ -41,7 +65,7 @@
                     "name": "Oak Small Shield",
                     "tier": 1,
                     "materials": {
-                        "Oak_Wood": 2,
+                        "Sanded_Oak_Wood": 2,
                         "Leather_Strips": 1
                     },
                     "item": "Oak_Small_Shield",
@@ -127,6 +151,18 @@
                     "item": "Copper_Ring",
                     "value": {
                         "copper": 10
+                    }
+                },
+                {
+                    "name": "Topaz Copper Ring",
+                    "tier": 1,
+                    "materials": {
+                        "Copper_Bar": 1,
+                        "Topaz": 1
+                    },
+                    "item": "Topaz_Copper_Ring",
+                    "value": {
+                        "copper": 20
                     }
                 }
             ]

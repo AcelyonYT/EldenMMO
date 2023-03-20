@@ -17,6 +17,7 @@ module.exports = {
     async execute(app, interaction, data, embed) {
         let {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         let guildMember = interaction.member;
         if(interaction.options.get("player")){
             guildMember = interaction.options.getMember("player");
@@ -133,7 +134,7 @@ module.exports = {
         );
         let reply = await interaction.reply({embeds: [embed], components: [selectMenuRow, buttonMenuRow], fetchReply: true});
         const filter = x => x.user.id === interaction.member.id;
-        const collector = reply.createMessageComponentCollector({filter, time: 30000});
+        const collector = reply.createMessageComponentCollector({filter, idle: 30000});
         let materialEmbeds = []; let miscEmbeds = []; let booksEmbeds = []; let weaponsEmbed = [];
         let baitEmbeds = []; let foodEmbeds = []; let armorEmbeds = []; let jeweleryEmbeds = [];
         let potionsEmbeds = []; let runesEmbeds = []; let glyphsEmbeds = [];

@@ -1,4 +1,12 @@
 {
+    "Cooked_Salmon": {
+        "category": "food",
+        "value": {
+            "sell": {
+                "copper": 20
+            }
+        }
+    },
     "Salt_Pile": {
         "category": "food",
         "value": {

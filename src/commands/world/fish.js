@@ -1,5 +1,6 @@
 const { ApplicationCommandType, ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const animalList = require("../../static/jsons/animals.json");
+const baitJson = require("../../static/items/bait.json");
 
 module.exports = {
     info: {
@@ -15,11 +16,19 @@ module.exports = {
     },
     async execute(app, interaction, data, embed){
         let {player} = data;
+        if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         let bait = interaction.options.getString("bait");
         let fixedString =  app.utility.upperCaseEachWord(bait);
-        if(player == null) return await interaction.reply("You don't have data to use this command!");
         if(player.professions.get("fishing") == null) return await interaction.reply("You need the fishing profession to use this command!");
         if(!player.inventory.get("Fishing_Rod")) return await interaction.reply("You don't have a fishing rod to fish with!");
+        let type;
+        for(const item in baitJson){
+            if(baitJson[item].name == fixedString){
+                type = baitJson[item].category;
+            }
+        }
+        if(type != "bait") return await interaction.reply("You need to bait to fish!");
         if(!player.inventory.get(fixedString)) return await interaction.reply("You don't have any bait to fish with!");
         if(player.stamina < 15) return await interaction.reply("You don't have enough stamina, try resting for a bit!");
         if(player.cooldowns.get("fish") > interaction.createdTimestamp){

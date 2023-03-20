@@ -104,6 +104,7 @@ module.exports = {
     async execute(app, interaction, data, embed){
         let {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         let subcommand = interaction.options.getSubcommand();
         sendTrainerEmbed(app, interaction, embed, player, subcommand);
     }
@@ -163,11 +164,14 @@ async function buyProfession(app, interaction, embed, profession, curProfession,
             .addFields(
                 {name: "You purchased this profession!", value: "Run the command again to view your profession!"}
             );
-            let proCommand = ["chop", "mine", "fish", "gather", "skin", "hunt"];
-            let command = ["logging", "mining", "fishing", "herbalism", "skinning", "survival"]
+            let proCommand = ["chop", "mine", "fish", "gather", "skin", "hunt", "smelt", "sand", "tanning", "mill"];
+            let command = ["logging", "mining", "fishing", "herbalism", "skinning", "survival",
+                            "blacksmithing", "woodworking", "leatherworking", "inscription"];
             for(let i = 0; i < command.length; i++){
                 if(profession != command[i]) continue;
-                await updatedPlayer.cooldowns.set(`${proCommand[i]}`, interaction.createdTimestamp);
+                if(proCommand[i] != "smelt" || proCommand[i] != "sand" || proCommand[i] != "tanning" || proCommand[i] != "mill"){
+                    await updatedPlayer.cooldowns.set(`${proCommand[i]}`, interaction.createdTimestamp);
+                }
                 await interaction.followUp({content: `You gain the \`${proCommand[i]}\` command!`, ephemeral: true});
             }
             await updatedPlayer.save();
@@ -347,7 +351,7 @@ async function showProfession(app, interaction, embed, player, profession, curPr
                             .setCustomId(`select${i}`)
                             .setPlaceholder(`Nothing Selected`)
                     );
-                    selectMenuRow = addOptions(labels, values, descriptions, selectMenuRow, 6, offset);
+                    selectMenuRow = app.utility.addOptions(labels, descriptions, values, selectMenuRow, 6, offset);
                     selectMenuArr.push(selectMenuRow);
                     offset = offset + 6;
                 }
@@ -441,25 +445,6 @@ function findTier(professionVal, curProfession) {
         break;
     }
     return {tier, maxLvl, costOfNextTier, costString};
-}
-function addOptions(labels, values, descriptions, selectMenuRow, max, offset){
-    for(let i = 0; i < labels.length; i++){
-        let newIndex = i + offset;
-        if(i > (max - 1)){
-            continue;
-        }
-        if(!labels[newIndex]){
-            break;
-        }
-        selectMenuRow.components[0].addOptions(
-            {
-                label: labels[newIndex],
-                description: descriptions[newIndex],
-                value: values[newIndex]
-            }
-        );
-    }
-    return selectMenuRow;
 }
 function pushToArray(player, array, labels, values, descriptions, string){
     let removeIndex;

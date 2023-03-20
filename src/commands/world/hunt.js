@@ -44,16 +44,17 @@ module.exports = {
     },
     async execute(app, interaction, data, embed){
         let {player} = data;
-        let weaponType = interaction.options.getString("weapon_type");
-        let weapon = interaction.options.getString("weapon_name");
-        let fixedString = app.utility.upperCaseEachWord(weapon);
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         if(player.stamina < 15) return await interaction.reply("You don't have enough stamina, try resting for a bit!");
+        if(player.professions.get("survival") == null) return await interaction.reply("You need the survival profession to use this command!");
         if(player.cooldowns.get("hunt") > interaction.createdTimestamp){
             await interaction.reply({content: `You can run **hunt** <t:${Math.round(player.cooldowns.get("hunt")/1000)}:R>`, ephemeral: true});
             return;
         }
-        if(player.professions.get("survival") == null) return await interaction.reply("You need the survival profession to use this command!");
+        let weaponType = interaction.options.getString("weapon_type");
+        let weapon = interaction.options.getString("weapon_name");
+        let fixedString = app.utility.upperCaseEachWord(weapon);
         if(!player.inventory.get(fixedString)) return await interaction.reply(`You do not have a ${fixedString.split("_").join(" ")}!`);
         let ammoList; let type;
         for(const item in weaponList){

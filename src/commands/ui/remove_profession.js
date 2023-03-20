@@ -10,6 +10,7 @@ module.exports = {
     async execute(app, interaction, data, embed){
         let { player } = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         if(player.professions.size > 0){
             let labels = []; let descriptions = []; let values = [];
             for( const [key] of player.professions){
@@ -23,7 +24,7 @@ module.exports = {
                     .setCustomId("select")
                     .setPlaceholder("Nothing Selected")
             );
-            selectMenuRow = addOptions(labels, descriptions, values, selectMenuRow);
+            selectMenuRow = app.utility.addOptions(labels, descriptions, values, selectMenuRow, labels.length, 0);
             let buttonMenuRow = new ActionRowBuilder().addComponents(
                 new ButtonBuilder()
                     .setCustomId("remove")
@@ -43,33 +44,36 @@ module.exports = {
                         app.utility.enableButtons(buttonMenuRow);
                     break;
                     case x.customId == "remove":
-                        if(curItem == false) await interaction.followUp("You need to select a profession first!");
-                        await updatedPlayer.removeProfession(curItem);
-                        switch(curItem){
-                            case "mining":
-                                updatedPlayer.cooldowns.delete("mine");
-                            break;
-                            case "herbalism":
-                                updatedPlayer.cooldowns.delete("gather");
-                            break;
-                            case "logging":
-                                updatedPlayer.cooldowns.delete("chop");
-                            break;
-                            case "skinning":
-                                updatedPlayer.cooldowns.delete("skin");
-                            break;
-                            case "survival":
-                                updatedPlayer.cooldowns.delete("hunt");
-                            break;
-                            case "fishing":
-                                updatedPlayer.cooldowns.delete("fish");
-                            break;
+                        if(curItem == false) {
+                             await interaction.followUp("You need to select a profession first!");
+                        }else{
+                            await updatedPlayer.removeProfession(curItem);
+                            switch(curItem){
+                                case "mining":
+                                    updatedPlayer.cooldowns.delete("mine");
+                                break;
+                                case "herbalism":
+                                    updatedPlayer.cooldowns.delete("gather");
+                                break;
+                                case "logging":
+                                    updatedPlayer.cooldowns.delete("chop");
+                                break;
+                                case "skinning":
+                                    updatedPlayer.cooldowns.delete("skin");
+                                break;
+                                case "survival":
+                                    updatedPlayer.cooldowns.delete("hunt");
+                                break;
+                                case "fishing":
+                                    updatedPlayer.cooldowns.delete("fish");
+                                break;
+                            }
+                            await interaction.followUp(`You removed ${curItem} profession.`);
+                            await updatedPlayer.save();
+                            const newEmbed = new EmbedBuilder().setColor("#D63FB5");
+                            embed = createEmbed(updatedPlayer, newEmbed);
+                            curItem = false;
                         }
-                        await interaction.followUp(`You removed ${curItem} profession.`);
-                        await updatedPlayer.save();
-                        const newEmbed = new EmbedBuilder().setColor("#D63FB5");
-                        embed = createEmbed(updatedPlayer, newEmbed);
-                        curItem = false;
                     break;
                 }
                 if(updatedPlayer.professions.size > 0){
@@ -84,7 +88,7 @@ module.exports = {
                             .setCustomId("select")
                             .setPlaceholder("Nothing Selected")
                     );
-                    newSelectMenuRow = addOptions(labels, descriptions, values, newSelectMenuRow);
+                    newSelectMenuRow = app.utility.addOptions(labels, descriptions, values, newSelectMenuRow, labels.length, 0);
                     newSelectMenuRow.components[0].setPlaceholder(curItem != false ? `${curItem}` : "Nothing Selected");
                     await x.update({embeds: [embed], components: [newSelectMenuRow, buttonMenuRow]});
                 }else{
@@ -102,18 +106,6 @@ module.exports = {
             await interaction.reply({embeds: [embed]});
         }
     }
-}
-function addOptions(labels, descriptions, values, selectMenuRow) {
-    for(let i = 0; i < labels.length; i++) {
-        selectMenuRow.components[0].addOptions(
-            {
-                label: labels[i],
-                description: descriptions[i],
-                value: values[i]
-            }
-        );
-    }
-    return selectMenuRow;
 }
 function createEmbed(player, embed) {
     const title = `**${player.name}'s Professions**`;

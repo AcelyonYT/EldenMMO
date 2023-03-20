@@ -44,6 +44,7 @@ module.exports = {
     async execute(app, interaction, data, embed){
         const {player} = data;
         if(player == null) return await interaction.reply("You don't have data to use this command!");
+        if(player.resting == true) return await interaction.reply("You are currently resting, you can't use other commands!");
         const subcommand = interaction.options.getSubcommand();
         switch(subcommand){
             case "weapon":
@@ -131,7 +132,7 @@ async function sell(app, interaction, player){
         reply = await interaction.reply({embeds: [embeds[0]], components: [actionRows[0], buttonMenuRow, buttonMenuRow2], fetchReply: true, ephemeral: true});
     }
     const filter = x => x.user.id === interaction.member.id;
-    const collector = reply.createMessageComponentCollector({filter, time: 60000});
+    const collector = reply.createMessageComponentCollector({filter, idle: 60000});
     let soldItem;
     collector.on("collect", async (x) => {
         let updatedPlayer = await app.db.users.findOne({id: interaction.member.id}).exec();
@@ -295,7 +296,7 @@ async function openShop(app, interaction, embed, itemType, type){
     );
     let reply = await interaction.reply({embeds: [embed], components: [selectMenuRow, buttonMenuRow], fetchReply: true, ephemeral: true});
     const filter = x => x.user.id === interaction.member.id;
-    const collector = reply.createMessageComponentCollector({filter, time: 60000});
+    const collector = reply.createMessageComponentCollector({filter, idle: 60000});
     let buyItem;
     collector.on("collect", async (x) => {
         let updatedPlayer = await app.db.users.findOne({id: interaction.member.id}).exec();
