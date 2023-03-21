@@ -113,7 +113,7 @@ async function convertMaterial(interaction, player, embed, item, amount, subcomm
     let str1 = subcommand == "smelt" ? "smelted" : subcommand == "sand" ? "sanded" : subcommand == "tanning" ? "tanned" : subcommand == "mill" ? "milled" : undefined;
     let rawMaterialList = []; let refinedMaterialList =[]; let type;
     for(const item_ in materials){
-        if(materials[item_].name == item && materials[item_].type == rawtype){
+        if(materials[item_].type == rawtype){
             type = materials[item_].type;
             rawMaterialList.push(materials[item_].name);
         }
@@ -126,8 +126,8 @@ async function convertMaterial(interaction, player, embed, item, amount, subcomm
     if(player.inventory.get(item) < amountOfItem) return await interaction.reply(`You don't have enough ${item.split("_").join(" ")} to convert!`);
     await interaction.reply(`You begin ${str} ${item.split("_").join(" ")}...`);
     setTimeout(async function(){
-        const index = rawMaterialList.indexOf(item);
-        const material = refinedMaterialList[index];
+        let index = rawMaterialList.indexOf(item);
+        let material = refinedMaterialList[index];
         embed.setTitle(`${material.split("_").join(" ")}`).addFields(
             {name: `You ${str1} ${amountOfItem} ${item.split("_").join(" ")}${amountOfCoal == 0 ? "!" : " using " + amountOfCoal + " coal!"}`, value: `${amount} ${material.split("_").join(" ")} has been added to your inventory!`}
         );
