@@ -36,13 +36,13 @@ module.exports = {
             let maxLvl;
             let num = app.utility.randomInt(1, 100);
             switch(true){
-                case num <= 100 && num >= 76:
+                case num <= 100 && num >= 91:
                     bonus = ["Topaz"];
                 break;
-                case num <= 75 && num >= 51:
+                case num <= 90 && num >= 76:
                     bonus = ["Empty_Rune"];
                 break;
-                case num <= 50 && num >= 26:
+                case num <= 75 && num >= 60:
                     bonus = ["Fire_Essence"];
                 break;
                 default: bonus = [];
