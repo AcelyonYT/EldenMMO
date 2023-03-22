@@ -221,6 +221,29 @@
         {
             "name": "survival",
             "recipes": [
+                {
+                    "name": "String",
+                    "tier": 1,
+                    "materials": {
+                        "Linen_Cloth": 1
+                    },
+                    "item": "String",
+                    "value": {
+                        "copper": 15
+                    }
+                },
+                {
+                    "name": "Fishing Rod",
+                    "tier": 1,
+                    "materials": {
+                        "String": 2,
+                        "Stick": 1
+                    },
+                    "item": "Fishing_Rod",
+                    "value": {
+                        "copper": 15
+                    }
+                }
             ]
         },
         {

@@ -84,7 +84,7 @@ module.exports = {
             labels.push(recipe.name);
             descriptions.push(`craft ${recipe.name}`);
             values.push(recipe.name.toLowerCase());
-            embeds.push(createNewEmbeds(recipe, 1));
+            embeds.push(createNewEmbeds(recipe, 1, player));
         }
         if(labels.length == 0) return await interaction.reply("You don't have any recipes for that profession!");
         let buttonMenuRow = new ActionRowBuilder().addComponents(
@@ -106,7 +106,7 @@ module.exports = {
                 .setLabel("x1")
                 .setStyle(ButtonStyle.Primary)
         );
-        let max = 2;
+        let max = 6;
         if(labels.length < max){ 
             app.utility.disableButtonId(buttonMenuRow, "more");
             app.utility.disableButtonId(buttonMenuRow, "less"); 
@@ -134,14 +134,14 @@ module.exports = {
         collector.on("collect", async (x) => {
             let updatedPlayer = await app.db.users.findOne({id: interaction.member.id}).exec();
             let curProfession = updatedPlayer.professions.get(subcommand);
-            switch(true){
-                case x.customId == "select":
+            switch(x.customId){
+                case "select":
                     curItem = x.values.shift();
                     currentIndex = values.indexOf(curItem);
                     curRecipe = recipeList.recipes.find(x => x.name.toLowerCase() == curItem);
                     ableToCraft = checkMaterials(updatedPlayer, curRecipe.materials, multiplier);
                 break;
-                case x.customId == "more" || x.customId == "less":
+                case "more" || "less":
                     curItem = false;
                     let newSelectMenuRow = new ActionRowBuilder().addComponents(
                         new SelectMenuBuilder()
@@ -158,7 +158,7 @@ module.exports = {
                     newSelectMenuRow = app.utility.addOptions(labels, descriptions, values, newSelectMenuRow, max, offset);
                     selectMenuRow = newSelectMenuRow;
                 break;
-                case x.customId == "multiply":
+                case "multiply":
                     if(curItem == false){
                         await interaction.followUp("You need to select an item reciple first!");
                     }else{
@@ -168,12 +168,12 @@ module.exports = {
                         buttonMenuRow.components[3].setLabel(`x${multiplier}`);
                         for(const recipe of player.recipes){
                             if(!recipeList.recipes.find(x => x.name == recipe.name)) continue;
-                            embeds.push(createNewEmbeds(recipe, multiplier));
+                            embeds.push(createNewEmbeds(recipe, multiplier, updatedPlayer));
                         }
                         ableToCraft = checkMaterials(updatedPlayer, curRecipe.materials, multiplier);
                     }
                 break;
-                case x.customId == "craft":
+                case "craft":
                     if(curItem == false) {
                         await interaction.followUp("You need to select an item recipe first!");
                     }else{
@@ -192,6 +192,11 @@ module.exports = {
                                 updatedPlayer.updateProfession(subcommand, proExp);
                                 await interaction.followUp(`${subcommand} has increased by **${proExp}**. ${subcommand} is now **${updatedPlayer.professions.get(subcommand)}**`);
                             }
+                        }
+                        embeds = [];
+                        for(const recipe of updatedPlayer.recipes){
+                            if(!recipeList.recipes.find(x => x.name == recipe.name)) continue;
+                            embeds.push(createNewEmbeds(recipe, multiplier, updatedPlayer));
                         }
                         ableToCraft = checkMaterials(updatedPlayer, curRecipe.materials, multiplier);
                         await updatedPlayer.save();
@@ -217,10 +222,10 @@ function checkMaterials(player, materials, multiplier) {
     }
     return true;
 }
-function createNewEmbeds(recipe, multiplier) {
+function createNewEmbeds(recipe, multiplier, player) {
     let newEmbed = new EmbedBuilder().setTitle(`${recipe.name}`).addFields({name: `Info`, value: `Tier: ${recipe.tier}`});
     let materialArr = []; let valueArr = [];
-    for(const [key, value] of recipe.materials){ materialArr.push(`${key.split("_").join(" ")}: ${value * multiplier}`); }
+    for(const [key, value] of recipe.materials){ materialArr.push(`${key.split("_").join(" ")}: ${!player.inventory.get(key) ? 0 : player.inventory.get(item)}/${value * multiplier}`); }
     for(const [key, value] of recipe.value){ valueArr.push(`${key.split("_").join(" ")}: ${value}`); }
     newEmbed.addFields({name: "Materials", value: `${materialArr.join("\n")}`});
     newEmbed.addFields({name: "Sell Value", value: `${valueArr.join("\n")}`});

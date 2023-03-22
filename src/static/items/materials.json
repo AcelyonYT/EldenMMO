@@ -252,6 +252,15 @@
             }
         }
     },
+    "String": {
+        "category": "materials",
+        "type": "other",
+        "value": {
+            "sell": {
+                "copper": 5
+            }
+        }
+    },
     "Linen_Cloth": {
         "category": "materials",
         "type": "cloth",
