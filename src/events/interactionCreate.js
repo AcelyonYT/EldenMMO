@@ -6,31 +6,28 @@ const { EmbedBuilder } = require("discord.js");
  * @param {*} interaction the interaction object for discord to use
  * @returns 
  */
-module.exports = async (app, interaction) => {
-    if(!interaction.isCommand()) return;
-    // grab data models
-    const guildModel = app.db.guild;
-    const playerModel = app.db.users;
+module.exports = async function( interaction )
+{
+    if( !interaction.isCommand() ) return;
     // create the embed
-    const embed = new EmbedBuilder().setTimestamp(interaction.createdTimestamp).setColor("#D63FB5");
+    const embed = new EmbedBuilder().setTimestamp( interaction.createdTimestamp ).setColor( "#D63FB5" );
     // get player data
-    let guild = await guildModel.findOneAndUpdate({id: interaction.guild.id}, {returnDocument: "after"}).exec();
-    let player = await playerModel.findOneAndUpdate({id: interaction.user.id}, {returnDocument: "after"}).exec();
+    let guild = await this.db.guild.findOneAndUpdate( { id: interaction.guild.id }, { returnDocument: "after" } ).exec();
+    let player = await this.db.users.findOneAndUpdate( { id: interaction.user.id }, { returnDocument: "after" } ).exec();
     // get staff role
-    const role = interaction.member.roles.cache.find(r => r.id === "1020932931197354026");
+    const role = interaction.member.roles.cache.find( r => r.id === "ROLE ID HERE IF YOU USE THIS" );
     // get the command
-    const command = app.commands.get(interaction.commandName);
+    const command = this.commands.get( interaction.commandName );
     // if the interactoin isn't in the guild send this
-    if(!interaction.inGuild()){
-        await interaction.reply("Commands are not available in dms!");
-        return;
-    }
+    if( !interaction.inGuild() ) return await interaction.reply( "Commands are not available in dms!" );
     // execute the command
-    try{
-        await command.execute(app, interaction, {guild, player}, embed, role);
+    try
+    {
+        await command.execute( interaction, { guild, player }, embed, role );
     }
-    catch(err){
+    catch(err)
+    {
         // log the error
-        console.log(err);
+        console.log( err );
     }
-}
+};

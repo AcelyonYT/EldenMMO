@@ -105,4 +105,4 @@ dist
 
 package-lock.json
 
-/src/achived_files
+src/achived_files

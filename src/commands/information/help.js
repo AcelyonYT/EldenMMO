@@ -1,12 +1,21 @@
-const { ApplicationCommandType } = require("discord.js");
+const Command = require("../../classes/command.js");
 
-module.exports = {
-    info: {
-        name: "help",
-        description: "Information about the bot!",
-        type: ApplicationCommandType.ChatInput
-    },
-    execute(app, interaction, data, embed){
+module.exports = class help extends Command
+{
+    constructor( app, { category } )
+    {
+        super(
+            app, 
+            { 
+                name: "help",
+                category: category 
+            }
+        );
+        this.slashCommand.setDescription( "Information about the bot!" );
+    }
+
+    execute( interaction, data, embed )
+    {
 
     }
 }

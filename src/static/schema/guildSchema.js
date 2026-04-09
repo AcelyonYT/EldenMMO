@@ -1,8 +1,10 @@
-const {Schema} = require("mongoose");
+const { Schema } = require("mongoose");
 
-const guildSchema = new Schema({
-    id: {type: String},
-    name: {type: String}
-});
+const guildSchema = new Schema(
+    {
+        id: {type: String},
+        name: {type: String}
+    }
+);
 
 module.exports = guildSchema;
